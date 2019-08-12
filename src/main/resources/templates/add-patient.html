@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+<nav th:insert="navibar :: navbar-fragment"></nav>
+
+<br><br>
+
+<div>
+    <form th:action="@{/webapp/submitpatient}" th:object="${patient}" method="post" enctype="multipart/form-data">
+        <div class="form-row">
+            <div class="form-group col-md-2 offset-md-5">
+                <label for="firstName">Imię</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" th:value="${patient}==null ? '' : ${patient.firstName}">
+            </div>
+        </div>
+
+         <div class="form-row">
+            <div class="form-group col-md-2 offset-md-5">
+                <label for="lastName">Nazwisko</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" th:value="${patient}==null ? '' : ${patient.lastName}" >
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-2 offset-md-5">
+                <label for="gender">Płeć</label>
+                <select class="form-control" name="gender" id="gender" th:value="${patient}==null ? '' : ${patient.gender}">
+                    <option value="MAN">Mężczyzna</option>
+                    <option value="WOMAN">Kobieta</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-2 offset-md-5">
+                <label for="pesel">pesel</label>
+                <input type="text" class="form-control" id="pesel" name="pesel" th:value="${patient}==null ? '' : ${patient.pesel}">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-2 offset-md-5">
+                <label for="birthdate">Data urodzenia</label>
+                <input type="date" class="form-control" id="birthdate" name="birthdate" lang="pl" th:value="${patient}==null ? '' : ${patient.birthdate}">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-2 offset-md-5">
+                <label for="phoneNumber">Numer telefonu</label>
+                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber"  th:value="${patient}==null ? '' : ${patient.phoneNumber}">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-2 offset-md-5">
+                <label for="allergies">Alergie</label>
+                <textarea rows="3" class="form-control" id="allergies" name="allergies"  th:value="${patient}==null ? '' : ${patient.allergies}"></textarea>
+            </div>
+        </div>
+
+
+        <div class="form-row">
+            <div class="file-field col-md-3 offset-5">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="file" name="file" th:value="${file}">
+                    <label class="custom-file-label" for="file" th:text="${file}" >Wybierz zdjęcie</label>
+                </div>
+                <!--<div class="file-path-wrapper">-->
+                    <!--<input class="file-path validate" type="text" placeholder="Upload your file">-->
+                <!--</div>-->
+                <!--<label for="photo">Photo</label>-->
+                <!--<input type="file" class="form-control" id="photo" name="photo" />-->
+            </div>
+        </div>
+
+        <!--<div class="form-row">-->
+            <!--<div class="form-group col-md-2 offset-md-4">-->
+                <!--<label for="eMail">e-mail</label>-->
+                <!--<input type="email" class="form-control" id="eMail" name="eMail" placeholder="e-mail" th:value="${patient}==null ? '' : ${patient.eMail}">-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <div class="form-row">
+            <div class="form-group col-md-2 offset-md-7 mt-4">
+                <!--<input type="hidden" name="login" th:value="${patient}==null ? '' : ${patient.login}">-->
+                <!--<input type="hidden" name="password" th:value="${patient}==null ? '' : ${patient.password}">-->
+                <!--<input type="hidden" name="id" th:value="${patient}==null ? 0L : ${patient.id}">-->
+                <input type="hidden" name="id" th:value="0L">
+                <button type="submit" class="btn btn-primary">Dodaj pacjenta</button>
+            </div>
+        </div>
+
+
+
+    </form>
+</div>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

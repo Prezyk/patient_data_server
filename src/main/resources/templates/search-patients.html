@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+<body>
+<div th:insert="navibar :: navbar-fragment"></div>
+<br><br>
+
+<div>
+    <form th:action="@{/webapp/searchpatients}" method="get">
+        <div class="form-row">
+
+            <div class="form-group col-md-1 offset-md-3">
+                <label for="param">Set filter:</label>
+            </div>
+
+            <div class="form-group col-md-2 offset-md-0">
+                <select name="param" id="param" class="form-control">
+                    <option selected value="none">Wybierz...</option>
+                    <option value="firstName">Imię</option>
+                    <option value="lastName">Nazwisko</option>
+                    <option value="PESEL">PESEL</option>
+                    <option value="phoneNumber">Numer telefonu</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-2 offset-md-0">
+                <input type="text" name="paramValue" class="form-control" id="paramValue">
+            </div>
+
+            <div class="form-group col-md-2 offset-md-0">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<table class="table table-striped w-50 container">
+    <thead class="thead-dark">
+    <tr>
+        <!--<th scope="col"><a th:href="@{/employee/sortPatientByID}">ID</a></th>-->
+        <!--<th scope="col"><a th:href="@{/employee/sortPatientByFirstName}">First Name</a></th>-->
+        <!--<th scope="col"><a th:href="@{/employee/sortPatientByLastName}">Last Name</a></th>-->
+        <!--<th scope="col"><a th:href="@{/employee/sortPatientByPESEL}">PESEL</a></th>-->
+        <!--<th scope="col"><a th:href="@{/employee/sortPatientByBirthdate}">Birthdate</a></th>-->
+        <!--<th scope="col"><a th:href="@{/employee/sortPatientByPhoneNumber}">Phone number</a></th>-->
+        <!--<th scope="col">E-mail</th>-->
+
+        <th scope="col">ID</th>
+        <th scope="col">Imię</th>
+        <th scope="col">Nazwisko</th>
+        <th scope="col">PESEL</th>
+        <th scope="col">Data urodzenia</th>
+        <th scope="col">Numer telefonu</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="patient: ${patients}">
+        <td><a th:href="@{/webapp/patientinfo(patientId=${patient.id})}"  th:text="${patient.id}"  scope="row">-</a></td>
+        <td th:text="${patient.firstName}">-</td>
+        <td th:text="${patient.lastName}">-</td>
+        <td th:text="${patient.pesel}">-</td>
+        <td th:text="${patient.birthdate}">-</td>
+        <td th:text="${patient.phoneNumber}">-</td>
+    </tr>
+    </tbody>
+</table>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</body>
+</html>

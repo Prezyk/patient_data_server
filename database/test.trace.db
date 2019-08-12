@@ -1,0 +1,21 @@
+2019-05-23 16:18:54 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "SELECT * FROM ALLERGY
+SELECT[*] * FROM EVENT
+SELECT * FROM PATIENT
+SELECT * FROM RESULT"
+Syntax error in SQL statement "SELECT * FROM ALLERGY
+SELECT[*] * FROM EVENT
+SELECT * FROM PATIENT
+SELECT * FROM RESULT"; SQL statement:
+SELECT * FROM ALLERGY
+SELECT * FROM EVENT
+SELECT * FROM PATIENT
+SELECT * FROM RESULT [42000-199]
+2019-06-03 04:32:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny """PHOTO_BASE64"" VARCHAR(255)": "'iVBORw0KGgoAAAANSUhEUgAAAZAAAAIBCAIAAADoD37gAACAAElEQVR4XpS9h5tURbf27b/yvs8jwgxMzjkyM8ww5JyDCEgSARFBAUEQBZSgCEjOOecsOUgOk3N3T+e... (533992)"
+Value too long for column """PHOTO_BASE64"" VARCHAR(255)": "'iVBORw0KGgoAAAANSUhEUgAAAZAAAAIBCAIAAADoD37gAACAAElEQVR4XpS9h5tURbf27b/yvs8jwgxMzjkyM8ww5JyDCEgSARFBAUEQBZSgCEjOOecsOUgOk3N3T+e... (533992)"; SQL statement:
+insert into patient (id, pesel, birthdate, first_name, gender, last_name, phone_number, photo_base64, photo) values (null, ?, ?, ?, ?, ?, ?, ?, ?) [22001-199]
+2019-06-11 19:01:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny """PESEL"" VARCHAR(11) NOT NULL": "'8576543267854' (13)"
+Value too long for column """PESEL"" VARCHAR(11) NOT NULL": "'8576543267854' (13)"; SQL statement:
+insert into patient (id, birthdate, first_name, gender, last_name, pesel, phone_number, photo) values (null, ?, ?, ?, ?, ?, ?, ?) [22001-199]
