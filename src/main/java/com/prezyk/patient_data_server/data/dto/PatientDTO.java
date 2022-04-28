@@ -40,7 +40,7 @@ public class PatientDTO {
                     break;
         }
         this.phoneNumber = patient.getPhoneNumber();
-        if(patient.getAllergies()!=null) {
+        if(patient.getAllergies()!=null && patient.getAllergies().size()>0) {
             StringBuilder sb = new StringBuilder();
             for (String s : patient.getAllergies()) {
                 sb.append(s + "\n");

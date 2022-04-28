@@ -5,9 +5,6 @@
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.pixelmed.dicom.DicomException;
-import com.pixelmed.dicom.DicomInputStream;
-import com.pixelmed.displaywave.DicomSourceECG;
 import com.prezyk.patient_data_server.data.dao.xml.LabResult;
 import com.prezyk.patient_data_server.data.dao.xml.LabResults;
 import org.w3c.dom.Document;
@@ -29,18 +26,18 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException, DicomException {
-
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.YEAR, 1940);
-        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-        System.out.println(format.format(calendar.getTime()));
-        System.out.println(calendar.getTimeInMillis());
-
-
-        Date date = new Date(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-        System.out.println(date.getTime());
+    public static void main(String[] args) throws IOException {
+//
+//
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.set(Calendar.YEAR, 1940);
+//        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+//        System.out.println(format.format(calendar.getTime()));
+//        System.out.println(calendar.getTimeInMillis());
+//
+//
+//        Date date = new Date(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+//        System.out.println(date.getTime());
 
 //        Path path = Paths.get(System.getProperty("user.home")).resolve("sample_lab.xml");
 //        File file = new File(path.toString());

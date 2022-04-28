@@ -1,11 +1,10 @@
 package com.prezyk.patient_data_server;
 
-import com.pixelmed.dicom.DicomException;
 import com.prezyk.patient_data_server.data.*;
 import com.prezyk.patient_data_server.data.Event;
 import com.prezyk.patient_data_server.data.dao.ImageResultDAO;
 import com.prezyk.patient_data_server.data.dao.LabResultDAO;
-import com.prezyk.patient_data_server.data.dao.TimeSeriesResultDAO;
+//import com.prezyk.patient_data_server.data.dao.TimeSeriesResultDAO;
 import com.prezyk.patient_data_server.data.dao.xml.LabResults;
 import com.prezyk.patient_data_server.data.jpa_repositories.EventRepository;
 import com.prezyk.patient_data_server.data.jpa_repositories.PatientRepository;
@@ -48,18 +47,18 @@ public class MainController {
         Patient patient = new Patient(photopath.toString(), "Jan", "Kowalski", "12345673532", LocalDate.of(1990, 12, 13), "MAN", "432432123");
         Patient patient2 = new Patient(photopath.toString(), "Eleonora", "Jankiewicz", "01027728391", LocalDate.of(1974, 8, 15), "WOMAN", "000-000-000");
 
-        Path path = Paths.get(System.getProperty("user.home")).resolve("anonymous_ecg.dcm");
-        Path path2 = Paths.get(System.getProperty("user.home")).resolve("sample_lab.xml");
-        Path path3 = Paths.get(System.getProperty("user.home")).resolve("dicom_test.dcm");
+//        Path path = Paths.get(System.getProperty("user.home")).resolve("anonymous_ecg.dcm");
+//        Path path2 = Paths.get(System.getProperty("user.home")).resolve("sample_lab.xml");
+//        Path path3 = Paths.get(System.getProperty("user.home")).resolve("dicom_test.dcm");
 
 
-        ResultData result1 = new ResultData(patient, ResultData.TestType.IMG, path3.toString(), LocalDate.of(2018, 3, 10), "Description1");
-        ResultData result2 = new ResultData(patient, ResultData.TestType.TS, path.toString(), LocalDate.of(2019, 4, 12), "Description2");
-        ResultData result3 = new ResultData(patient, ResultData.TestType.LAB, path2.toString(), LocalDate.of(2019, 3, 2), "Description2");
-
-        patient.addResult(result1);
-        patient.addResult(result2);
-        patient.addResult(result3);
+//        ResultData result1 = new ResultData(patient, ResultData.TestType.IMG, path3.toString(), LocalDate.of(2018, 3, 10), "Description1");
+//        ResultData result2 = new ResultData(patient, ResultData.TestType.TS, path.toString(), LocalDate.of(2019, 4, 12), "Description2");
+//        ResultData result3 = new ResultData(patient, ResultData.TestType.LAB, path2.toString(), LocalDate.of(2019, 3, 2), "Description2");
+//
+//        patient.addResult(result1);
+//        patient.addResult(result2);
+//        patient.addResult(result3);
 
 //        Allergy allergy = new Allergy(patient2, "Ketoprofen");
 //        Allergy allergy1 = new Allergy(patient2, "Penicylina");
@@ -67,9 +66,9 @@ public class MainController {
         patient2.addAllergy("Ketoprofen");
         patient2.addAllergy("Penicylina");
 
-        resultDataRepository.save(result1);
-        resultDataRepository.save(result2);
-        resultDataRepository.save(result3);
+//        resultDataRepository.save(result1);
+//        resultDataRepository.save(result2);
+//        resultDataRepository.save(result3);
 //        allergyRepository.save(allergy);
 //        allergyRepository.save(allergy1);
         patientRepository.save(patient);
@@ -160,23 +159,23 @@ public class MainController {
         return labResults;
     }
 
-    @GetMapping("/patient/timeseriesresult")
-    public byte[] sendTimeSeriesResult(@RequestParam(value = "resultID") Long resultID) throws IOException, DicomException {
-
-        ResultData timeSeriesResult = resultDataRepository.findResultDataById(resultID);
-
-        if(timeSeriesResult==null) {
-            return null;
-        }
-
-        TimeSeriesResultDAO dao = new TimeSeriesResultDAO(timeSeriesResult);
-
-        return dao.getData();
-    }
+//    @GetMapping("/patient/timeseriesresult")
+//    public byte[] sendTimeSeriesResult(@RequestParam(value = "resultID") Long resultID) throws IOException, DicomException {
+//
+//        ResultData timeSeriesResult = resultDataRepository.findResultDataById(resultID);
+//
+//        if(timeSeriesResult==null) {
+//            return null;
+//        }
+//
+//        TimeSeriesResultDAO dao = new TimeSeriesResultDAO(timeSeriesResult);
+//
+//        return dao.getData();
+//    }
 
     @GetMapping("/patient/imageresult")
     @ResponseBody
-    public byte[] sendImageResult(@RequestParam(value="resultID") Long resultID) throws IOException, DicomException {
+    public byte[] sendImageResult(@RequestParam(value="resultID") Long resultID) throws IOException {
         ResultData imageResult = resultDataRepository.findResultDataById(resultID);
 
 //        Path path = Paths.get(System.getProperty("user.home")).resolve("dicom_test.dcm");
